@@ -100,7 +100,7 @@ public class MovieSearchControllerTests {
 
 	@Test
 	public void testSearchOk() throws Exception {
-		when(service.searchAll("mov", 0, 20)).thenReturn(mockSearches());
+		when(service.searchAll("mov", 0.0, 0, 20)).thenReturn(mockSearches());
 		this.mockMvc.perform(get("/movie/search?query=mov&page=0&limit=20")).andDo(print()).andExpect(status().isOk())
 				.andExpect(jsonPath("$.search_results").isNotEmpty())
 				.andExpect(jsonPath("$.search_results[0].id").isNotEmpty());

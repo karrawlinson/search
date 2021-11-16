@@ -1,5 +1,7 @@
 package com.carina.search.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,6 +17,7 @@ import com.carina.search.domain.SearchResponse;
 import com.carina.search.domain.SuggestionResponse;
 import com.carina.search.service.ElasticsearchService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 /**
  * Rest API to search movies 
@@ -36,6 +39,7 @@ public class MovieSearchController {
 	 * @param limit
 	 * @return
 	 */
+	@Operation(summary = "Search movie suggestions for typeahead functioanlity")
 	@RequestMapping(value = { "/autosuggest" }, produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
 	public SuggestionResponse autosuggest(@RequestParam String query, @RequestParam(defaultValue = "5") Integer limit) {
 		return searchService.autosuggest(query, limit);
@@ -48,6 +52,7 @@ public class MovieSearchController {
 	 * @param limit
 	 * @return
 	 */
+	@Operation(summary = "Get movie details by id")
 	@RequestMapping(value = { "/{id}" }, produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
 	public Movie findById(@PathVariable String id) {
 		
@@ -65,6 +70,7 @@ public class MovieSearchController {
 	 * @param limit
 	 * @return
 	 */
+	@Operation(summary = "Search movies similar to the given movie id")
 	@RequestMapping(value = { "/{id}/similar" }, produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
 	public SearchResponse searchSimilar(@PathVariable String id, @RequestParam(defaultValue = "0") Integer page,
 			@RequestParam(defaultValue = "100") Integer limit ) {
@@ -72,16 +78,17 @@ public class MovieSearchController {
 	}
 
 	/**
-	 * Search documents and allow filtering based on facets
+	 * Search multiple document fields and allow filtering
 	 * @param query
 	 * @param page
 	 * @param limit
 	 * @return
 	 */
+	@Operation(summary = "Search movies including title, description, actors etc. and allow filtering based on the average user rating")
 	@RequestMapping(value = { "/search" }, produces = { MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
 	public SearchResponse search(@RequestParam String query, @RequestParam(defaultValue = "0") Integer page,
-			@RequestParam(defaultValue = "100") Integer limit) {
-		return searchService.searchAll(query, page, limit);
+			@RequestParam(defaultValue = "100") Integer limit, @RequestParam(defaultValue = "0") Double minRating) {
+		return searchService.searchAll(query, minRating, page, limit);
 	}
 
 	/**
@@ -91,6 +98,7 @@ public class MovieSearchController {
 	 * @param limit
 	 * @return
 	 */
+	@Operation(summary = "Search movie titles")
 	@RequestMapping(value = { "/titleSearch" }, produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
 	public SearchResponse searchByTitle(@RequestParam String query,@RequestParam(defaultValue = "0") Integer page,
 			@RequestParam(defaultValue = "100") Integer limit) {

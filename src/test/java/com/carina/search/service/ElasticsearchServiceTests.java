@@ -1,13 +1,8 @@
 package com.carina.search.service;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.elasticsearch.core.SearchHits;
-
-import com.carina.search.domain.Movie;
 import com.carina.search.domain.SearchResponse;
 import com.carina.search.domain.SearchResult;
 import com.carina.search.domain.Suggestion;
@@ -83,7 +78,7 @@ public class ElasticsearchServiceTests {
 	@Test
 	void testSearchAllOk() {
 
-		SearchResponse response = elasticsearchService.searchAll("star", 0, 10);
+		SearchResponse response = elasticsearchService.searchAll("star", 0.0, 0, 10);
 		assert(response != null);
 		assert(response.getSearchResults().size() == 10);
 		for(SearchResult result: response.getSearchResults()) {
@@ -96,7 +91,7 @@ public class ElasticsearchServiceTests {
 	@Test
 	void testSearchAllLimit() {
 
-		SearchResponse response = elasticsearchService.searchAll("star", 0, 3);
+		SearchResponse response = elasticsearchService.searchAll("star", 0.0, 0, 3);
 		assert(response != null);
 		assert(response.getSearchResults().size() == 3);
 		for(SearchResult result: response.getSearchResults()) {
