@@ -2,7 +2,7 @@ printf "\n\n Starting elasticsearch node ..."
 docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -d -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.12.1
 
 printf "\n\n Pausing to allow startup ..."
-sleep 15  
+sleep 30  
 
 printf "\n\n Creating index ..."
 curl -X PUT 'http://localhost:9200/movies' -H 'Content-Type: application/json' --data-binary "@data/index.json"
