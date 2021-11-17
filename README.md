@@ -2,17 +2,17 @@
 
 REST API to search movies using an Elasticsearch node loaded with a movie dataset. 
 
-The data folder contains a dataset of approx 50K movies between 1970 and 2020
+The data folder contains a movie dataset in json format with approx 50K movies between 1970 and 2020.
 
 ### Dependencies
 
-Docker is required to run an elasticsearch node and Java 11 is required for the REST API service
+Docker is required to run an elasticsearch node and Java 11 is required for the REST API service.
 
 Additionally Lombok is used to remove boilerplate code from the domain classes so you may need to configure Lombok for your IDE: https://www.baeldung.com/lombok-ide
 
 ### Getting Started
 
-The repo contains a ``startup.sh`` folder for convenience which runs the following commands to startup the cluster/service and load the data:
+The repo contains a ``startup.sh`` script for convenience which runs the following commands to startup elasticsearch/service and load the data:
 
 ```
 docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -d -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.12.1
