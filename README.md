@@ -43,6 +43,8 @@ The screenshots below show examples of using the Swagger UI to find movies
 ###### Search similar movies:
 ![plot](https://github.com/karrawlinson/search/raw/main/images/similar.PNG)
 
+###### Search movie details e.g. director and filter:
+![plot](https://github.com/karrawlinson/search/raw/main/images/searchall.PNG)
 
 ### Reference Documentation
 For further reference, please consider the following sections:
