@@ -1,7 +1,4 @@
 package com.carina.search.controllers;
-
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -64,7 +61,7 @@ public class MovieSearchController {
 	}
 	
 	/**
-	 * Search similar movies for more like this functionaity
+	 * Search similar movies for more like this functionality
 	 * @param id
 	 * @param page
 	 * @param limit
@@ -84,11 +81,11 @@ public class MovieSearchController {
 	 * @param limit
 	 * @return
 	 */
-	@Operation(summary = "Search movies including title, description, actors etc. and allow filtering based on the average user rating")
+	@Operation(summary = "Search movies including title, description, actors etc. and allow filtering based on the average user vote")
 	@RequestMapping(value = { "/search" }, produces = { MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
 	public SearchResponse search(@RequestParam String query, @RequestParam(defaultValue = "0") Integer page,
-			@RequestParam(defaultValue = "100") Integer limit, @RequestParam(defaultValue = "0") Double minRating) {
-		return searchService.searchAll(query, minRating, page, limit);
+			@RequestParam(defaultValue = "100") Integer limit, @RequestParam(defaultValue = "0") Double minVote) {
+		return searchService.searchAll(query, minVote, page, limit);
 	}
 
 	/**
