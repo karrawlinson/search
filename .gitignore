@@ -1,6 +1,5 @@
 HELP.md
 .gradle
-build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
@@ -35,3 +34,8 @@ out/
 
 ### VS Code ###
 .vscode/
+build/bootJarMainClassName
+build/bootRunMainClassName
+build/classes/
+build/resources/
+build/tmp/

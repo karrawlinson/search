@@ -35,13 +35,13 @@ When finished the Java process can be stopped and the Elasticsearch node can be 
 The screenshots below show examples of using the Swagger UI to find movies
 
 ###### Autosuggest movies:
-![plot](./images/suggest.png)
+![plot](https://github.com/karrawlinson/search/raw/main/images/suggest.PNG)
 
 ###### Search based on title:
-![plot](./images/search.png)
+![plot](https://github.com/karrawlinson/search/raw/main/images/search.PNG)
 
 ###### Search similar movies:
-![plot](./images/similar.png)
+![plot](https://github.com/karrawlinson/search/raw/main/images/similar.PNG)
 
 
 ### Reference Documentation
